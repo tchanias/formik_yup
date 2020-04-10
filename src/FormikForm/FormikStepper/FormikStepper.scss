@@ -1,0 +1,19 @@
+.stepper {
+  @extend .flex-row-center-center;
+  width: 100%;
+  min-height: 35px;
+  &_prev {
+    padding: 10px;
+    margin-right: 5px;
+    background-color: $main_color;
+    color: #fff;
+    cursor: pointer;
+  }
+  &_next {
+    padding: 10px;
+    margin-left: 5px;
+    background-color: $main_color;
+    color: #fff;
+    cursor: pointer;
+  }
+}

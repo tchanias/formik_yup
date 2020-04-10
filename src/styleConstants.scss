@@ -1,0 +1,214 @@
+$main_color: #273f60;
+$main_color_hover: rgba(39, 63, 96, 0.9);
+$secondary_color: #31b0ff;
+$green_text: #74d98f;
+$font_family: "Montserrat", sans-serif;
+$poiMaxHeight: 480px;
+.no-text-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+.contained-100 {
+  width: 100%;
+  height: 100%;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-column-center-nothing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flex-column-start-nothing {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.flex-column-center-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column-center-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.flex-column-between-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column-center-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+}
+
+.flex-column-start-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-column-start-between {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.flex-column-start-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.flex-column-end-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flex-column-between-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.flex-column-between-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.flex-column-end-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.flex-column-between-nothing {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flex-column-around-nothing {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.flex-column-center-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-row-between-nothing {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-row-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-row-between-end {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.flex-row-start-center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-row-end-center {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flex-row-center-nothing {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-row-start-nothing {
+  display: flex;
+  justify-content: flex-start;
+}
+.flex-row-start-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.flex-row-center-end {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.flex-row-end-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.flex-row-between-start {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.flex-row-center-start {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.flex-row-between-start {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}

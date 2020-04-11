@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { WizardContext } from "../../WizardContext";
+import { ReactComponent as Tick } from "../../assets/tick.svg";
+import { ReactComponent as Cancel } from "../../assets/delete.svg";
 
 export default function FormikForm(props) {
   const wizard = useContext(WizardContext);
@@ -11,7 +13,7 @@ export default function FormikForm(props) {
     title: dev ? "Developer" : "",
     team: dev ? 10 : "",
     methodology: dev ? "Agile" : "",
-    description: dev ? "description" : "",
+    description: dev ? "Description" : "",
   });
 
   const workSchema = yup.object().shape({
@@ -67,9 +69,7 @@ export default function FormikForm(props) {
   return wizard.step.matches(formName) ? (
     <div className="form">
       <div className="step-completed">
-        {wizard.valid.includes(wizard.step.value)
-          ? "Step Completed!"
-          : "Step not completed yet!"}
+        {wizard.valid.includes(wizard.step.value) ? <Tick /> : <Cancel />}
       </div>
       <div className={"form_heading"}>Enter your work details here</div>
       <Formik

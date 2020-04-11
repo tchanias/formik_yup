@@ -15,7 +15,7 @@ export default function Wizard() {
     step: current,
     steps: ["personal", "work", "company", "account"],
     valid: current.context.valid,
-    devMode: true,
+    devMode: false,
     setStep: (direction) => {
       send(direction);
     },

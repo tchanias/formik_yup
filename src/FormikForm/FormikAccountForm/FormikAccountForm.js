@@ -8,7 +8,7 @@ export default function FormikForm(props) {
   const dev = wizard.devMode;
   const formName = wizard.steps[3];
   const [formState, setFormState] = useState({
-    username: dev ? "thanos" : "",
+    username: dev ? "johnW" : "",
     password: dev ? "!1Qqaaaa" : "",
     confirm: dev ? "!1Qqaaaa" : "",
   });

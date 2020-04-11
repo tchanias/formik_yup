@@ -5,6 +5,8 @@ import FormikContext from "./FormikContext/FormikContext";
 import FormikPhoneInput from "./PhoneInput/FormikPhoneInput";
 import { findNumbers } from "libphonenumber-js";
 import { WizardContext } from "../WizardContext";
+import { ReactComponent as Tick } from "../assets/tick.svg";
+import { ReactComponent as Cancel } from "../assets/delete.svg";
 
 export default function FormikForm(props) {
   const wizard = useContext(WizardContext);
@@ -13,12 +15,12 @@ export default function FormikForm(props) {
   const [stateValid, setStateValid] = useState(false);
   const [displayContextValues, setDisplayContextValues] = useState(false);
   const [formState, setFormState] = useState({
-    name: dev ? "thanos" : "",
-    lastName: dev ? "chanias" : "",
-    email: dev ? "tch@gmail.co" : "",
-    phone: dev ? "+306955651031" : "",
-    afm: dev ? "111111111" : "",
-    amka: dev ? "11111111111" : "",
+    name: dev ? "John" : "",
+    lastName: dev ? "Wilson" : "",
+    email: dev ? "jwill@gmail.com" : "",
+    phone: dev ? "+306955651040" : "",
+    afm: dev ? "123456789" : "",
+    amka: dev ? "12345678901" : "",
   });
   useEffect(() => {
     Promise.resolve(SignupSchema.isValid(formState))
@@ -128,9 +130,7 @@ export default function FormikForm(props) {
   return wizard.step.matches(formName) ? (
     <div className="form">
       <div className="step-completed">
-        {wizard.valid.includes(wizard.step.value)
-          ? "Step Completed!"
-          : "Step not completed yet!"}
+        {wizard.valid.includes(wizard.step.value) ? <Tick /> : <Cancel />}
       </div>
       <div className={"form_heading"}>Enter your personal details here</div>
       <Formik

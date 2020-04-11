@@ -4,6 +4,13 @@
 .no-visibility {
   visibility: hidden;
 }
+
+.step-completed {
+  svg {
+    height: 30px;
+    width: 30px;
+  }
+}
 .form {
   display: flex;
   justify-content: center;
@@ -37,15 +44,25 @@
     &_elements {
       display: flex;
       justify-content: flex-start;
-      align-items: center;
+      align-items: flex-start;
+      flex-direction: column;
       width: 100%;
+      margin-bottom: 20px;
       input,
-      select {
+      select,
+      textarea {
         justify-self: flex-end;
         margin-left: auto;
+        width: 100%;
+        height: $inputHeight;
+        padding-left: 5px;
+        color: $main_color;
       }
       label {
-        margin-right: 10px;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.5rem;
+        color: $main_color;
       }
     }
   }
@@ -63,12 +80,6 @@
   }
   input.error {
     border-color: red;
-  }
-
-  label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 0.5rem;
   }
 
   .input-feedback {
@@ -107,16 +118,16 @@
     display: flex;
     justify-content: flex-end;
     font-size: 12px;
+    width: 100%;
     input {
-      height: 21px;
-      width: 135px;
-      padding-left: 8px;
+      height: $inputHeight;
+      width: 100%;
+      padding-left: 44px;
       font-size: 12px;
-      padding-left: 8px;
       border-radius: 0;
     }
     .flag-dropdown {
-      right: 133px;
+      left: 0;
       border-radius: 0;
     }
     .phone-number-country {

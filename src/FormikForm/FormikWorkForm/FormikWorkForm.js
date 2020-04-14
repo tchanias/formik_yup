@@ -211,14 +211,14 @@ export default function FormikWorkForm(props) {
               />
             </div>
             <div className={"form_buttons"}>
-              <button
+              {/* <button
                 type="button"
                 className="outline"
                 onClick={props.handleReset}
                 disabled={!props.dirty || props.isSubmitting}
               >
                 Reset
-              </button>
+              </button> */}
               <button type="submit" disabled={props.isSubmitting}>
                 Submit
               </button>

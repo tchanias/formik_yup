@@ -1,5 +1,5 @@
 import React from "react";
-import FormikForm from "../FormikForm";
+import FormikPersonalForm from "../FormikPersonalForm/FormikPersonalForm";
 import { WizardContext } from "../../WizardContext";
 import FormikStepper from "../FormikStepper/FormikStepper";
 import FormikWorkForm from "../FormikWorkForm/FormikWorkForm";
@@ -29,6 +29,7 @@ export default function Wizard() {
   });
 
   React.useEffect(() => {
+    console.log("current: ", current);
     setContextValues({
       ...contextValues,
       step: current,
@@ -36,13 +37,27 @@ export default function Wizard() {
     });
   }, [current]);
 
+  const finishMessage = function () {
+    return (
+      <div className={"finish"}>
+        <div className={"finish_message"}>Thank you for signing up!</div>
+        <div
+          className={"finish_refresh"}
+          onClick={() => window.location.reload()}
+        >
+          Refresh
+        </div>
+      </div>
+    );
+  };
   return (
     <WizardContext.Provider value={contextValues}>
-      <FormikStepper />
-      <FormikForm />
-      <FormikWorkForm />
-      <FormikCompanyForm />
-      <FormikAccountForm />
+      {contextValues.step.value !== "finish" ? <FormikStepper /> : null}
+      {contextValues.step.value === "personal" ? <FormikPersonalForm /> : null}
+      {contextValues.step.value === "work" ? <FormikWorkForm /> : null}
+      {contextValues.step.value === "company" ? <FormikCompanyForm /> : null}
+      {contextValues.step.value === "account" ? <FormikAccountForm /> : null}
+      {contextValues.step.value === "finish" ? finishMessage() : null}
     </WizardContext.Provider>
   );
 }

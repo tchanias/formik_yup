@@ -5,7 +5,7 @@ import { WizardContext } from "../../WizardContext";
 import { ReactComponent as Tick } from "../../assets/tick.svg";
 import { ReactComponent as Cancel } from "../../assets/delete.svg";
 
-export default function FormikForm(props) {
+export default function FormikWorkForm(props) {
   const wizard = useContext(WizardContext);
   const dev = wizard.devMode;
   const formName = wizard.steps[1];
@@ -49,24 +49,38 @@ export default function FormikForm(props) {
     });
   };
 
+  // const findNextIncompleteStep = function () {
+  //   let nextIncompleteStep = "";
+  //   let currentStepPassed = false;
+  //   for (let i = 0; i < wizard.steps.length; i++) {
+  //     if (formName === wizard.steps[i] && !currentStepPassed) {
+  //       currentStepPassed = true;
+  //       continue;
+  //     } else if (currentStepPassed && !wizard.valid.includes(wizard.steps[i])) {
+  //       nextIncompleteStep = wizard.steps[i];
+  //       break;
+  //     } else {
+  //       continue;
+  //     }
+  //   }
+  //   return nextIncompleteStep;
+  // };
+
   const findNextIncompleteStep = function () {
-    let nextIncompleteStep = "";
     let currentStepPassed = false;
-    for (let i = 0; i < wizard.steps.length; i++) {
-      if (formName === wizard.steps[i] && !currentStepPassed) {
-        currentStepPassed = true;
-        continue;
-      } else if (currentStepPassed && !wizard.valid.includes(wizard.steps[i])) {
-        nextIncompleteStep = wizard.steps[i];
-        break;
-      } else {
-        continue;
+    let nextIncompleteStep = wizard.steps.find((form) => {
+      if (currentStepPassed && !wizard.valid.includes(form)) {
+        return form;
       }
-    }
+      if ((formName === form) & !currentStepPassed) {
+        currentStepPassed = true;
+      }
+    });
+    console.log("nextIncompleteStep", nextIncompleteStep);
     return nextIncompleteStep;
   };
 
-  return wizard.step.matches(formName) ? (
+  return (
     <div className="form">
       <div className="step-completed">
         {wizard.valid.includes(wizard.step.value) ? <Tick /> : <Cancel />}
@@ -213,5 +227,5 @@ export default function FormikForm(props) {
         )}
       </Formik>
     </div>
-  ) : null;
+  );
 }

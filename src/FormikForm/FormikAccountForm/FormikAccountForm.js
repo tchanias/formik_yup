@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { WizardContext } from "../../WizardContext";
 
-export default function FormikForm(props) {
+export default function FormikAccountForm(props) {
   const wizard = useContext(WizardContext);
   const dev = wizard.devMode;
   const formName = wizard.steps[3];
@@ -47,18 +47,25 @@ export default function FormikForm(props) {
     });
   };
 
+  // const searchContextForIncompleteSteps = function () {
+  //   let firstIncompleteStep = "";
+  //   for (let i = 0; i < wizard.steps.length - 1; i++) {
+  //     if (!wizard.valid.includes(wizard.steps[i])) {
+  //       firstIncompleteStep = wizard.steps[1];
+  //       break;
+  //     }
+  //   }
+  //   return firstIncompleteStep;
+  // };
+
   const searchContextForIncompleteSteps = function () {
-    let firstIncompleteStep = "";
-    for (let i = 0; i < wizard.steps.length - 1; i++) {
-      if (!wizard.valid.includes(wizard.steps[i])) {
-        firstIncompleteStep = wizard.steps[1];
-        break;
-      }
-    }
+    let firstIncompleteStep = wizard.steps.find(
+      (form) => !wizard.valid.includes(form)
+    );
     return firstIncompleteStep;
   };
 
-  return wizard.step.matches(formName) ? (
+  return (
     <div className="form">
       <div className={"form_heading"}>Enter your account details here</div>
       <Formik
@@ -175,5 +182,5 @@ export default function FormikForm(props) {
         )}
       </Formik>
     </div>
-  ) : null;
+  );
 }

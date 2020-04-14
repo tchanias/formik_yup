@@ -1,19 +1,25 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
+import {
+  Formik,
+  Form,
+  Field,
+  ErrorMessage,
+  //  useFormikContext
+} from "formik";
 import * as yup from "yup";
-import FormikContext from "./FormikContext/FormikContext";
-import FormikPhoneInput from "./PhoneInput/FormikPhoneInput";
+// import FormikContext from "./FormikContext/FormikContext";
+import FormikPhoneInput from "../PhoneInput/FormikPhoneInput";
 import { findNumbers } from "libphonenumber-js";
-import { WizardContext } from "../WizardContext";
-import { ReactComponent as Tick } from "../assets/tick.svg";
-import { ReactComponent as Cancel } from "../assets/delete.svg";
+import { WizardContext } from "../../WizardContext";
+import { ReactComponent as Tick } from "../../assets/tick.svg";
+import { ReactComponent as Cancel } from "../../assets/delete.svg";
 
-export default function FormikForm(props) {
+export default function FormikPersonalForm(props) {
   const wizard = useContext(WizardContext);
   const dev = wizard.devMode;
   const formName = wizard.steps[0];
   const [stateValid, setStateValid] = useState(false);
-  const [displayContextValues, setDisplayContextValues] = useState(false);
+  // const [displayContextValues, setDisplayContextValues] = useState(false);
   const [formState, setFormState] = useState({
     name: dev ? "John" : "",
     lastName: dev ? "Wilson" : "",
@@ -110,24 +116,37 @@ export default function FormikForm(props) {
     return found && found.length > 0;
   };
 
+  // const findNextIncompleteStep = function () {
+  //   let nextIncompleteStep = "";
+  //   let currentStepPassed = false;
+  //   for (let i = 0; i < wizard.steps.length; i++) {
+  //     if (formName === wizard.steps[i] && !currentStepPassed) {
+  //       currentStepPassed = true;
+  //       continue;
+  //     } else if (currentStepPassed && !wizard.valid.includes(wizard.steps[i])) {
+  //       nextIncompleteStep = wizard.steps[i];
+  //       break;
+  //     } else {
+  //       continue;
+  //     }
+  //   }
+  //   return nextIncompleteStep;
+  // };
+
   const findNextIncompleteStep = function () {
-    let nextIncompleteStep = "";
     let currentStepPassed = false;
-    for (let i = 0; i < wizard.steps.length; i++) {
-      if (formName === wizard.steps[i] && !currentStepPassed) {
-        currentStepPassed = true;
-        continue;
-      } else if (currentStepPassed && !wizard.valid.includes(wizard.steps[i])) {
-        nextIncompleteStep = wizard.steps[i];
-        break;
-      } else {
-        continue;
+    let nextIncompleteStep = wizard.steps.find((form) => {
+      if (currentStepPassed && !wizard.valid.includes(form)) {
+        return form;
       }
-    }
+      if ((formName === form) & !currentStepPassed) {
+        currentStepPassed = true;
+      }
+    });
     return nextIncompleteStep;
   };
 
-  return wizard.step.matches(formName) ? (
+  return (
     <div className="form">
       <div className="step-completed">
         {wizard.valid.includes(wizard.step.value) ? <Tick /> : <Cancel />}
@@ -307,13 +326,13 @@ export default function FormikForm(props) {
             ) : null}
 
             <div className={"form_buttons"}>
-              <button
+              {/* <button
                 type="button"
                 className="outline"
                 onClick={() => setDisplayContextValues(!displayContextValues)}
               >
                 Toggle Context
-              </button>
+              </button> */}
               <button
                 type="button"
                 className="outline"
@@ -326,7 +345,7 @@ export default function FormikForm(props) {
                 Submit
               </button>
             </div>
-            <FormikContext
+            {/* <FormikContext
               getState={useFormikContext}
               displayContextValues={displayContextValues}
             />
@@ -340,10 +359,10 @@ export default function FormikForm(props) {
               <div className={"text"}>
                 {!displayContextValues ? JSON.stringify(wizard) : null}
               </div>
-            </div>
+            </div> */}
           </Form>
         )}
       </Formik>
     </div>
-  ) : null;
+  );
 }

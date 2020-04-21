@@ -37,7 +37,7 @@ export default function Wizard() {
     });
   }, [current]);
 
-  const finishMessage = function () {
+  const FinishMessage = function () {
     return (
       <div className={"finish"}>
         <div className={"finish_message"}>Thank you for signing up!</div>
@@ -50,14 +50,29 @@ export default function Wizard() {
       </div>
     );
   };
+
+  const FormToggle = function ({ children }) {
+    return React.Children.map(children, (child, index) => {
+      if (
+        child.props.check === "stepper" &&
+        contextValues.step.value !== "finish"
+      ) {
+        return React.cloneElement(child);
+      } else if (child.props.check === contextValues.step.value) {
+        return React.cloneElement(child);
+      }
+    });
+  };
   return (
     <WizardContext.Provider value={contextValues}>
-      {contextValues.step.value !== "finish" ? <FormikStepper /> : null}
-      {contextValues.step.value === "personal" ? <FormikPersonalForm /> : null}
-      {contextValues.step.value === "work" ? <FormikWorkForm /> : null}
-      {contextValues.step.value === "company" ? <FormikCompanyForm /> : null}
-      {contextValues.step.value === "account" ? <FormikAccountForm /> : null}
-      {contextValues.step.value === "finish" ? finishMessage() : null}
+      <FormToggle>
+        <FormikStepper check={"stepper"} />
+        <FormikPersonalForm check={"personal"} />
+        <FormikWorkForm check={"work"} />
+        <FormikCompanyForm check={"company"} />
+        <FormikAccountForm check={"account"} />
+        <FinishMessage check={"finish"} />
+      </FormToggle>
     </WizardContext.Provider>
   );
 }

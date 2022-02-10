@@ -9,7 +9,7 @@
     "@xstate/react": "^0.8.1",
     "formik": "^2.1.4",
     "libphonenumber-js": "^1.7.50",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-phone-input-2": "^2.12.1",
